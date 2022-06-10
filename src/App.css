@@ -31,27 +31,55 @@
 }
 
 .task-list li label {
-  width: calc(100% - 100px);
   display: block;
   cursor: pointer;
 }
 
-.task-list li span {
+.task-list li div {
+  display: block;
+  width: calc(100% - 230px);
+}
+
+.task-list li .btn-group {
+  position: absolute;
+  right: 10px;
+  text-align: right;
+  width: 200px;
+}
+.task-list li .is-hover-show {
+  display: none;
+}
+
+.task-list li:hover .is-hover-show {
   display: block;
 }
 
 .task-list li .btn {
-  display: none;
   width: 80px;
-  position: absolute;
-  right: 10px;
-  padding: 0.4em 1em;
+  padding: 0.5em 1em 0.4em;
+  margin-left: 5px;
   font-size: 13px;
   z-index: 10;
 }
 
-.task-list li:hover .btn {
+.task-list li .is-cancel {
+  width: 96px;
+  background-color: #999;
+}
+
+.task-list li .input {
   display: block;
+  width: 100%;
+  font-size: 15px;
+  outline: none;
+  border: solid 1px #d7d2cd;
+  padding: 7px;
+  border-radius: 4px;
+  margin-top: -6px;
+}
+
+.task-list li .input:focus {
+  background: #f9f9f0;
 }
 
 .input-form {
@@ -63,6 +91,7 @@
 
 .input-form .inner {
   display: flex;
+  position: relative;
 }
 
 .input-form .input {
@@ -83,6 +112,22 @@
   width: 20%;
 }
 
+.input-form .input.error {
+  background-color: #ffd4dd;
+  border-color: #d01137;
+}
+
+.input-form .error-message {
+  position: absolute;
+  top: 48px;
+  background-color: #d01137;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
 .btn {
   font-size: 15px;
   cursor: pointer;
@@ -92,7 +137,8 @@
   text-decoration: none;
   background: #668ad8;
   color: #fff;
-  border-bottom: solid 4px #627295;
+  border: none;
+  border-bottom: solid 4px #485879;
   border-radius: 7px;
   outline: none;
 }
@@ -112,9 +158,9 @@
 }
 
 .checkbox-label {
-  padding-left: 30px;
   position: relative;
-  margin-right: 20px;
+  margin-right: 30px;
+  top: -10px;
 }
 
 .checkbox-label::before {
@@ -129,11 +175,11 @@
   border-radius: 4px;
 }
 
-.checkbox-input:checked + .checkbox-label {
+.done .checkbox-label {
   color: #999;
 }
 
-.checkbox-input:checked + .checkbox-label::after {
+.done .checkbox-label::after {
   content: "";
   display: block;
   position: absolute;
@@ -144,4 +190,24 @@
   transform: rotate(40deg);
   border-bottom: 3px solid #d01137;
   border-right: 3px solid #d01137;
+}
+
+/* Task List Fade */
+.fade-enter-active {
+  background-color: #fff8b0;
+  transition: background-color 300ms;
+}
+.fade-enter-done {
+  transition: background-color 1s;
+}
+.fade-exit {
+  background-color: #ffacbf;
+}
+.fade-exit-active {
+  background-color: transparent;
+  transition: background-color 700ms;
+}
+.fade-exit-active label {
+  opacity: 0.3;
+  transition: opacity 700ms;
 }
